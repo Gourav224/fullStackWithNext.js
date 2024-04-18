@@ -1,5 +1,5 @@
 {
-  "name": "zodvalidation",
+  "name": "fullstacknext.js",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -27,6 +27,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.1",
     "postcss": "^8",
+    "prettier": "^3.2.5",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
