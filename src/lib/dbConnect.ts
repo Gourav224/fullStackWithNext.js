@@ -16,9 +16,7 @@ async function dbConnect(): Promise<void> {
             `${process.env.MONOGODB_URI!}/FullStackWithNextjs` || ""
         );
         connection.isConnected = db.connections[0].readyState;
-        console.log("Connected to database successfully");
-        // console.log(db);
-        // console.log(connection);
+        console.log("Connected to database successfully");;
     } catch (error: any) {
         console.log(error);
         console.log("Error connecting to database");

@@ -7,7 +7,7 @@ const UserNameQuerySchema = z.object({
     username: usernameValidation,
 });
 
-export default async function GET(request: Request) {
+export async function GET(request: Request) {
     await dbConnect();
     try {
         const { searchParams } = new URL(request.url);
@@ -16,7 +16,7 @@ export default async function GET(request: Request) {
         };
         //vaidate with zod
         const result = UserNameQuerySchema.safeParse(queryParams);
-        console.log("unique username check reult \n ", result);
+        // console.log("unique username check result \n ", result);
         if (!result.success) {
             const usernameErrors =
                 result.error.format().username?._errors || [];
