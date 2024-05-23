@@ -63,7 +63,7 @@ export async function POST(request: Request) {
             });
             await newUser.save();
         }
-        const newUser = await UserModel.findOne({ email: email }).select(
+        const user = await UserModel.findOne({ email: email }).select(
             "-password -verifyCode -verifyCodeExpiry"
         );
         const emailResponse = await sendVerificationEmail(
@@ -71,13 +71,13 @@ export async function POST(request: Request) {
             username,
             verifyCode
         );
-        // console.log(emailResponse); //remove after testing
+        console.log(user); //remove after testing
         if (!emailResponse.success) {
             return Response.json(
                 {
                     success: false,
                     message: emailResponse.message,
-                    user: newUser,
+                    user: user,
                 },
                 {
                     status: 500,
@@ -89,6 +89,7 @@ export async function POST(request: Request) {
                 success: true,
                 message:
                     "User registered successfully. Please verify your email",
+                user
             },
             {
                 status: 201,

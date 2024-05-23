@@ -73,7 +73,7 @@ const page = () => {
                 "/api/sign-up",
                 data
             );
-
+            
             toast({
                 title: "Success",
                 description: response.data.message,
