@@ -61,11 +61,13 @@ const UserDashboard = () => {
                 const response =
                     await axios.get<ApiResponse>("/api/get-messages");
                 setMessages(response.data.messages || []);
+                console.log(response.data.messages)
                 if (refresh) {
                     toast({
                         title: "Refreshed Messages",
                         description: "Showing latest messages",
                     });
+                    
                 }
             } catch (error) {
                 const axiosError = error as AxiosError<ApiResponse>;
