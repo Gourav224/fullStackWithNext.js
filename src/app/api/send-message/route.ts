@@ -14,7 +14,6 @@ export async function POST(request: NextRequest) {
                 { status: 404 }
             );
         }
-
         // Check if the user is accepting messages
         if (!user.isAcceptingMessages) {
             return NextResponse.json(

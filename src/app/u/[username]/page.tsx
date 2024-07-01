@@ -215,7 +215,10 @@ import { useParams } from "next/navigation";
 import { messageSchema } from "@/schemas/messageSchema";
 
 const separateMessage = (messageString: string): string[] => {
-    return messageString.split("||");
+    // Split the messageString by "||"
+    const messages: string[] = messageString.split("||");
+
+    return messages;
 };
 const initialMessageString =
     "What's your favorite movie?||Do you have any pets?||What's your dream job?";
@@ -273,7 +276,9 @@ export default function SendMessage() {
                 "/api/suggest-messages"
             );
             const messageString = response.data.text;
+            console.log(messageString)
             const messages = separateMessage(messageString);
+            console.log(messages)
             setSuggestedMessages(messages);
         } catch (error) {
             console.error("Error fetching messages:", error);
