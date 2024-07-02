@@ -1,7 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server'; // Import NextRequest and NextResponse
-import UserModel from "@/model/User";
+import { NextRequest, NextResponse } from "next/server";
+import UserModel, { Message } from "@/model/User";
 import dbConnect from "@/lib/dbConnect";
-import { Message } from "@/model/User";
 
 export async function POST(request: NextRequest) {
     await dbConnect();
@@ -22,12 +21,11 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        const newMessage: Message = { content, createdAt: new Date() };
+        const newMessage: any = { content, createdAt: new Date() };
 
         // Push the new message to the user's messages array
         user.messages.push(newMessage);
         await user.save();
-
         return NextResponse.json(
             { message: "Message sent successfully", success: true },
             { status: 201 }
