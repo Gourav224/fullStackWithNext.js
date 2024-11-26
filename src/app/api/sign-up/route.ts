@@ -71,7 +71,6 @@ export async function POST(request: Request) {
             username,
             verifyCode
         );
-        console.log(user); //remove after testing
         if (!emailResponse.success) {
             return Response.json(
                 {
